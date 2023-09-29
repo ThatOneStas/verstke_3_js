@@ -7,7 +7,31 @@
     <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
-    ddd
+    <section class="products">
+        <!-- sorter -->
+        <div class="products__sort">
+            <label for="products__sort">Sort Product Price:</label>
+            <select name="sort" id="products__sort">
+                <option selected disabled>Select type SORT</option>
+                <option value="DESC">DESC</option>
+                <option value="ASC">ASC</option>
+            </select>
+        </div>
+        <!-- filter -->
+        <div class="products__filter">
+            <!-- search  -->
+            <div class="products__filter_search">
+                <label for="search">Search:</label>
+                <input type="text" name="search" id="filter_search">
+            </div>
+        </div>
+       
+
+        <div class="products__area">
+            <!-- products -->
+        </div>
+
+    </section>
     <script src="scripts/index.js"></script>
 </body>
 </html>
