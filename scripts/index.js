@@ -28,8 +28,6 @@ const showProductOnDOM = async(products,selector)=>{
     AREA.innerHTML = html
 }
 
-
-
 const addNewProduct=async()=>{
     await fetch('https://fakestoreapi.com/products',{
             method:"POST",
@@ -64,11 +62,29 @@ const filterBySearchQuery=(products,query,selector_area)=>{
     showProductOnDOM(filtedProducts,selector_area)
 }
 
+const filterProductsByCategories =(products,category,selector_area)=>{
+    let filteredProducts
+    if(category==`men's clothing`){
+        filteredProducts = products.sort((a,b)=>a.price-b.price)
+    }
+    else if(category==`jewelery`){
+        filteredProducts = products.sort((a,b)=>b.price-a.price)
+    }
+    else if(category==`electronics`){
+        filteredProducts = products.sort((a,b)=>b.price-a.price)
+    }
+    else if(category==`women's clothing`){
+        filteredProducts = products.sort((a,b)=>b.price-a.price)
+    }
+    showProductOnDOM(filteredProducts,selector_area)
+}
+
 // start
 document.addEventListener("DOMContentLoaded",async()=>{
     // get elements DOM
     const INPUT_SELECT = document.querySelector(".products__sort")
     const INPUT_SEARCH = document.querySelector("#filter_search")
+    const INPUT_FILTER = document.querySelector("#products__filter")
     // get products
     const PRODUCTS = await getAllProducts()
     // show products
@@ -82,5 +98,9 @@ document.addEventListener("DOMContentLoaded",async()=>{
     })
     INPUT_SEARCH.addEventListener("input",(e)=>{
         filterBySearchQuery(PRODUCTS,e.target.value,".products__area")
+    })
+    INPUT_FILTER.addEventListener("change",(e)=>{
+        const CATEGORY = e.target.value
+        filterProductsByCategories(PRODUCTS,CATEGORY,".products__area")
     })
 })
