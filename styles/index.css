@@ -1,0 +1,19 @@
+.form {
+    position: relative;
+}
+
+.form__name_error {
+    display: none;
+    position: absolute;
+    bottom: -26px;
+    font-size: 10px;
+    color: red;
+}
+
+.form__name.error {
+    border: 2px solid red;
+}
+
+.form__name_error.error {
+    display: block;;
+}
